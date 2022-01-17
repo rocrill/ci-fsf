@@ -23,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #print(os.environ.get('SECRET_KEY', ))
-#SECRET_KEY = os.environ.get('SECRET_KEY', '')
-SECRET_KEY = 'django-insecure-ld0$oo85ez%n$%@7qmeq2$yf^)gl#)@twgcq7w-t5md&x8@n+h'
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-ld0$oo85ez%n$%@7qmeq2$yf^)gl#)@twgcq7w-t5md&x8@n+h')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ckz8780-django-walkthrough-app.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 #}
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://itggvevvgjjbth:99b420c9a2f7c332fd25db903e0891a1dbabfa77faa973b7fb2793414bdea8eb@ec2-3-232-22-121.compute-1.amazonaws.com:5432/d93p8lpa46o3um')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
